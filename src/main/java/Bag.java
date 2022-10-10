@@ -13,7 +13,10 @@ public abstract class Bag {
      *       - an int named capacity
      *       - an array of Strings named contents
      */
-
+    private String color;
+    private int numberOfContents;
+    private int capacity;
+    private abstract String[] contents;
 
 
 
@@ -26,7 +29,12 @@ public abstract class Bag {
      * be empty (e.g. numberOfContents is 0 and an empty String array for
      * its contents.)
      */
-
+    public Bag(String colour, int capacity) {
+        this.capacity = capacity;
+        this.color = colour;
+        this.numberOfContents = 0;
+        this.contents = String[];
+    }
 
 
 
@@ -37,7 +45,17 @@ public abstract class Bag {
      *           - getNumberOfContents
      *           - getCapacity
      */
+    public String getColor() {
+        return this.color;
+    }
 
+    public int getNumberOfContents(){
+        return  this.numberOfContents;
+    }
+
+    public int getCapacity(){
+        return this.capacity;
+    }
 
 
 
@@ -45,7 +63,9 @@ public abstract class Bag {
      * TODO: Create a setter function called setColor which sets the
      *       color of this bag to the given color.
      */
-
+    public void setColor(String color) {
+        this.color = color;
+    }
 
 
 
