@@ -33,7 +33,7 @@ public abstract class Bag {
         this.capacity = capacity;
         this.color = colour;
         this.numberOfContents = 0;
-        this.contents = String[];
+        this.contents = String[capacity];
     }
 
 
@@ -80,6 +80,15 @@ public abstract class Bag {
      *       This method should return true if the item was added
      *       and false otherwise.
      */
+    public boolean addItem(String item){
+        if (this.numberOfContents < this.capacity) {
+            this.contents[numberOfContents] = item;
+            this.numberOfContents = this.numberOfContents + 1;
+            return true
+        } else {
+            return false
+        }
+    }
 
 
 
