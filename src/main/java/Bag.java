@@ -5,6 +5,10 @@
  * 1. Introduction to Java helpful.
  */
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public abstract class Bag {
     /*
      * TODO: Create the following private instance variables
@@ -82,7 +86,9 @@ public abstract class Bag {
      */
     public boolean addItem(String item){
         if (this.numberOfContents < this.capacity) {
-            this.contents[numberOfContents] = item;
+            String[]newArrray = Arrays.copyOf(this.contents, this.contents.length + 1);
+            newArrray[this.contents.length] = item;
+            this.contents = newArrray;
             this.numberOfContents = this.numberOfContents + 1;
             return true;
         } else {
@@ -106,6 +112,15 @@ public abstract class Bag {
      */
 
 
+    public String popItem(){
+       String[] smallerContents = new String[this.contents.length - 1];
+       for (int i = 0; i < smallerContents.length - 1; i++){
+           smallerContents[i] = this.contents[i];
+       }
+       String deletedItem = this.contents[this.contents.length - 1];
+       this.contents = smallerContents;
+       return deletedItem;
+    }
 
 
 
@@ -115,7 +130,8 @@ public abstract class Bag {
      * @param n the amount to increase this Bag's capacity by
      */
     public void increaseCapacity(int n) {
-        // TODO: Implement this method.
+        String[] biggerBag = Arrays.copyOf(this.contents, this.contents.length + n);
+        this.contents = biggerBag;
 
     }
 
